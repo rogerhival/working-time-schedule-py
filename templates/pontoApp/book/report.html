@@ -1,0 +1,25 @@
+<form action="{% url 'report' %}" method="POST">
+    {% csrf_token %}
+    <label for="dateSelectedFrom">From</label>
+    <input type="date" name="dateSelectedFrom" value="{{dateSelectedFrom}}" />
+    <label for="dateSelectedTo">To</label>
+    <input type="date" name="dateSelectedTo" value={{dateSelectedTo}} />
+    
+    <input type="submit" value="Search" />
+</form>
+
+    {% if books.count > 0  %}
+        Marcações:
+        <ul>
+        {% for b in books %}
+            <li>
+                <div>
+                    Data: {{b.date|date:"d/m/Y"}} 
+                    Horário: {{b.time|date:"H:i"}} 
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+<a href="/" > Voltar </a>

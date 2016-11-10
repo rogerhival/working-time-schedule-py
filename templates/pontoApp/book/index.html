@@ -1,0 +1,18 @@
+<div class="content">
+    Últimos pontos do dia {% now "d/m/Y" %}:
+    <ul>
+        {% for b in books %}
+        <li>
+            {{b.time|date:"H:i"}}
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<form action='/register/' method='post'>
+    {% csrf_token %}
+    <input type="submit" value="Marcar" />
+</form>
+
+<br>
+<a href="/"> Voltar </a>
